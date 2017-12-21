@@ -495,6 +495,9 @@ public class CreateFileUtil {
 	 */
 	private String readToString(String path) throws Exception {
 		InputStream fis = Thread.currentThread().getContextClassLoader().getResourceAsStream(path);
+		if (fis == null) {
+			return "";
+		}
 		int size = fis.available();
 		byte[] buffer = new byte[size];
 		fis.read(buffer);
